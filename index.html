@@ -1,3 +1,88 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <link rel ="stylesheet" href ="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity ="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin ="anonymous">
+    <title>morning meeting shuffling</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity ="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin ="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <header>
+        <div class="container text-center">
+            <h1 class="title">Morning Meeting Shuffling</h1>
+        </div>
+    </header>
+    <main>
+        <!-- date and timer -->
+        <div class="container text-center">
+            <div>2021/9/15 11:37 PM</div>
+        </div>
+        <!-- name and memo -->
+        <div class="container">
+            <div class="row">
+                <!-- name -->
+                <div class="col-sm-8">
+                    <div>NAME</div>
+                    <button type="button" class="btn btn-secondary">A → Z</button>
+                    <button type="button" class="btn btn-secondary">Z → A</button>
+                    <button type="button" class="btn btn-secondary">あ → ん</button>
+                    <button type="button" class="btn btn-secondary">ん → あ</button>
+                </div>
+                <!-- memo -->
+                <div class="col-sm-4">
+                    <div>Memo</div>
+                    <textarea class="form-control" id="memo"></textarea>
+                    
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+    <!-- Write all css here for making one html file -->
+    <style type="text/css">
+        div {color: #0f62fe;}
+        #memo {
+            width: 100%;
+            height: 80vh;
+        }
+    </style>
+    <!-- Write all js here for making one html file -->
+    <script type="text/javascript">
+        console.log("hello");
+        var DATA_LIST = [
+        {l_name: 'Ishii', f_name: 'Genichi ', a_to_z: 4, a_to_nn: 1},
+        {l_name: 'MIZUTA', f_name: 'HIDEYUKI ', a_to_z: 12, a_to_nn: 2},
+        {l_name: 'Hara', f_name: 'Kazuaki ', a_to_z: 2, a_to_nn: 3},
+        {l_name: 'Watanabe', f_name: 'Keita ', a_to_z: 23, a_to_nn: 4},
+        {l_name: 'Ueno', f_name: 'Ken ', a_to_z: 22, a_to_nn: 5},
+        {l_name: 'Matsushita', f_name: 'Kodai ', a_to_z: 10, a_to_nn: 6},
+        {l_name: 'KOJIMA', f_name: 'KOH ', a_to_z: 7, a_to_nn: 7},
+        {l_name: 'MATSUI', f_name: 'MANABU ', a_to_z: 9, a_to_nn: 8},
+        {l_name: 'Minakawa', f_name: 'Masahiro ', a_to_z: 11, a_to_nn: 9},
+        {l_name: 'Nagai', f_name: 'Naoki ', a_to_z: 13, a_to_nn: 10},
+        {l_name: 'Shuichi', f_name: 'SAITO ', a_to_z: 18, a_to_nn: 11},
+        {l_name: 'HIRANO', f_name: 'SATOMI ', a_to_z: 3, a_to_nn: 12},
+        {l_name: 'TADA', f_name: 'SEIJI ', a_to_z: 19, a_to_nn: 13},
+        {l_name: 'Kato', f_name: 'Shinya ', a_to_z: 5, a_to_nn: 14},
+        {l_name: 'Kawaguchi', f_name: 'Takanobu ', a_to_z: 6, a_to_nn: 15},
+        {l_name: 'Yonesaka', f_name: 'Takeshi ', a_to_z: 24, a_to_nn: 16},
+        {l_name: 'shimodaira', f_name: 'tokinori ', a_to_z: 17, a_to_nn: 17},
+        {l_name: 'nishiki1', f_name: 'wataru ', a_to_z: 15, a_to_nn: 18},
+        {l_name: 'Osonoi', f_name: 'Yasushi ', a_to_z: 16, a_to_nn: 19},
+        {l_name: 'egashira', f_name: 'yoshimitsu ', a_to_z: 1, a_to_nn: 20},
+        {l_name: 'TSUDA', f_name: 'YOSHITAKA ', a_to_z: 21, a_to_nn: 21},
+        {l_name: 'Takahashi', f_name: 'Yudai ', a_to_z: 20, a_to_nn: 22},
+        {l_name: 'Lin', f_name: 'Yuhan ', a_to_z: 8, a_to_nn: 23},
+        {l_name: 'NAKAYAMA[CEP]', f_name: 'YUKI ', a_to_z: 14, a_to_nn: 24},
+        ]
+        console.log(DATA_LIST)
+    </script>
+
+</body>
 </html>
