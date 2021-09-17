@@ -28,10 +28,15 @@
                 <!-- name -->
                 <div class="col-sm-8">
                     <div>NAME</div>
-                    <button type="button" class="btn btn-secondary">A → Z</button>
-                    <button type="button" class="btn btn-secondary">Z → A</button>
-                    <button type="button" class="btn btn-secondary">あ → ん</button>
-                    <button type="button" class="btn btn-secondary">ん → あ</button>
+                    <div>
+                        <button type="button" class="btn btn-secondary">A → Z</button>
+                        <button type="button" class="btn btn-secondary">Z → A</button>
+                        <button type="button" class="btn btn-secondary">あ → ん</button>
+                        <button type="button" class="btn btn-secondary">ん → あ</button>    
+                    </div>
+                    <div>
+                        
+                    </div>
                 </div>
                 <!-- memo -->
                 <div class="col-sm-4">
@@ -81,7 +86,11 @@
         {l_name: 'Lin', f_name: 'Yuhan ', a_to_z: 8, a_to_nn: 23},
         {l_name: 'NAKAYAMA[CEP]', f_name: 'YUKI ', a_to_z: 14, a_to_nn: 24},
         ]
-        console.log(DATA_LIST)
+        console.log(DATA_LIST.sort(function(x, y){
+            return x.a_to_z - y.a_to_z;
+        }))
+        console.log(DATA_LIST[1])
+        DATA_LIST.sort()
     </script>
 
 </body>
