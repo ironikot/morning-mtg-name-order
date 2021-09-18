@@ -28,14 +28,25 @@
                 <!-- name -->
                 <div class="col-sm-8">
                     <div>NAME</div>
+                        <div>
+                            <button type="button" class="btn btn-secondary sort-btn" id="atoz_btn">名前 A → Z</button>
+                            <button type="button" class="btn btn-secondary sort-btn" id="ztoa_btn">名前 Z → A</button>
+                            <button type="button" class="btn btn-secondary sort-btn" id="aton_btn">苗字 A → Z</button>
+                            <button type="button" class="btn btn-secondary sort-btn" id="ntoa_btn">苗字 Z → A</button>        
+                        </div>
+                        <table class="table table-condensed" >
+                            <thead>
+                                <th>First name</th>
+                                <th>Last name</th>
+                            </thead>
+                            <tbody id="name-data">
+
+                            </tbody>
+
+                        </table>
+                    
                     <div>
-                        <button type="button" class="btn btn-secondary">A → Z</button>
-                        <button type="button" class="btn btn-secondary">Z → A</button>
-                        <button type="button" class="btn btn-secondary">あ → ん</button>
-                        <button type="button" class="btn btn-secondary">ん → あ</button>    
-                    </div>
-                    <div>
-                        
+
                     </div>
                 </div>
                 <!-- memo -->
@@ -56,41 +67,100 @@
             width: 100%;
             height: 80vh;
         }
+        .table-condensed > thead > tr > th,
+        .table-condensed > tbody > tr > th,
+        .table-condensed > tfoot > tr > th,
+        .table-condensed > thead > tr > td,
+        .table-condensed > tbody > tr > td,
+        .table-condensed > tfoot > tr > td {
+        padding: 3px;  /* 5px の値を変更 */
+        }
     </style>
     <!-- Write all js here for making one html file -->
     <script type="text/javascript">
-        console.log("hello");
-        var DATA_LIST = [
-        {l_name: 'Ishii', f_name: 'Genichi ', a_to_z: 4, a_to_nn: 1},
-        {l_name: 'MIZUTA', f_name: 'HIDEYUKI ', a_to_z: 12, a_to_nn: 2},
-        {l_name: 'Hara', f_name: 'Kazuaki ', a_to_z: 2, a_to_nn: 3},
-        {l_name: 'Watanabe', f_name: 'Keita ', a_to_z: 23, a_to_nn: 4},
-        {l_name: 'Ueno', f_name: 'Ken ', a_to_z: 22, a_to_nn: 5},
-        {l_name: 'Matsushita', f_name: 'Kodai ', a_to_z: 10, a_to_nn: 6},
-        {l_name: 'KOJIMA', f_name: 'KOH ', a_to_z: 7, a_to_nn: 7},
-        {l_name: 'MATSUI', f_name: 'MANABU ', a_to_z: 9, a_to_nn: 8},
-        {l_name: 'Minakawa', f_name: 'Masahiro ', a_to_z: 11, a_to_nn: 9},
-        {l_name: 'Nagai', f_name: 'Naoki ', a_to_z: 13, a_to_nn: 10},
-        {l_name: 'Shuichi', f_name: 'SAITO ', a_to_z: 18, a_to_nn: 11},
-        {l_name: 'HIRANO', f_name: 'SATOMI ', a_to_z: 3, a_to_nn: 12},
-        {l_name: 'TADA', f_name: 'SEIJI ', a_to_z: 19, a_to_nn: 13},
-        {l_name: 'Kato', f_name: 'Shinya ', a_to_z: 5, a_to_nn: 14},
-        {l_name: 'Kawaguchi', f_name: 'Takanobu ', a_to_z: 6, a_to_nn: 15},
-        {l_name: 'Yonesaka', f_name: 'Takeshi ', a_to_z: 24, a_to_nn: 16},
-        {l_name: 'shimodaira', f_name: 'tokinori ', a_to_z: 17, a_to_nn: 17},
-        {l_name: 'nishiki1', f_name: 'wataru ', a_to_z: 15, a_to_nn: 18},
-        {l_name: 'Osonoi', f_name: 'Yasushi ', a_to_z: 16, a_to_nn: 19},
-        {l_name: 'egashira', f_name: 'yoshimitsu ', a_to_z: 1, a_to_nn: 20},
-        {l_name: 'TSUDA', f_name: 'YOSHITAKA ', a_to_z: 21, a_to_nn: 21},
-        {l_name: 'Takahashi', f_name: 'Yudai ', a_to_z: 20, a_to_nn: 22},
-        {l_name: 'Lin', f_name: 'Yuhan ', a_to_z: 8, a_to_nn: 23},
-        {l_name: 'NAKAYAMA[CEP]', f_name: 'YUKI ', a_to_z: 14, a_to_nn: 24},
-        ]
-        console.log(DATA_LIST.sort(function(x, y){
-            return x.a_to_z - y.a_to_z;
-        }))
-        console.log(DATA_LIST[1])
-        DATA_LIST.sort()
+        'use strict';
+        (function scopeWrapper($){
+            console.log("hello");
+            var data_list = [
+                {l_name: 'Ishii', f_name: 'Genichi ', a_to_z: 4, a_to_nn: 1},
+                {l_name: 'MIZUTA', f_name: 'HIDEYUKI ', a_to_z: 12, a_to_nn: 2},
+                {l_name: 'Hara', f_name: 'Kazuaki ', a_to_z: 2, a_to_nn: 3},
+                {l_name: 'Watanabe', f_name: 'Keita ', a_to_z: 23, a_to_nn: 4},
+                {l_name: 'Ueno', f_name: 'Ken ', a_to_z: 22, a_to_nn: 5},
+                {l_name: 'Matsushita', f_name: 'Kodai ', a_to_z: 10, a_to_nn: 6},
+                {l_name: 'KOJIMA', f_name: 'KOH ', a_to_z: 7, a_to_nn: 7},
+                {l_name: 'MATSUI', f_name: 'MANABU ', a_to_z: 9, a_to_nn: 8},
+                {l_name: 'Minakawa', f_name: 'Masahiro ', a_to_z: 11, a_to_nn: 9},
+                {l_name: 'Nagai', f_name: 'Naoki ', a_to_z: 13, a_to_nn: 10},
+                {l_name: 'Shuichi', f_name: 'SAITO ', a_to_z: 18, a_to_nn: 11},
+                {l_name: 'HIRANO', f_name: 'SATOMI ', a_to_z: 3, a_to_nn: 12},
+                {l_name: 'TADA', f_name: 'SEIJI ', a_to_z: 19, a_to_nn: 13},
+                {l_name: 'Kato', f_name: 'Shinya ', a_to_z: 5, a_to_nn: 14},
+                {l_name: 'Kawaguchi', f_name: 'Takanobu ', a_to_z: 6, a_to_nn: 15},
+                {l_name: 'Yonesaka', f_name: 'Takeshi ', a_to_z: 24, a_to_nn: 16},
+                {l_name: 'shimodaira', f_name: 'tokinori ', a_to_z: 17, a_to_nn: 17},
+                {l_name: 'nishiki1', f_name: 'wataru ', a_to_z: 15, a_to_nn: 18},
+                {l_name: 'Osonoi', f_name: 'Yasushi ', a_to_z: 16, a_to_nn: 19},
+                {l_name: 'egashira', f_name: 'yoshimitsu ', a_to_z: 1, a_to_nn: 20},
+                {l_name: 'TSUDA', f_name: 'YOSHITAKA ', a_to_z: 21, a_to_nn: 21},
+                {l_name: 'Takahashi', f_name: 'Yudai ', a_to_z: 20, a_to_nn: 22},
+                {l_name: 'Lin', f_name: 'Yuhan ', a_to_z: 8, a_to_nn: 23},
+                {l_name: 'NAKAYAMA[CEP]', f_name: 'YUKI ', a_to_z: 14, a_to_nn: 24},
+                ]
+
+            var display_name = function(){
+
+                var name_data = data_list.sort(function(x, y){
+                //return x.a_to_z - y.a_to_z;
+                return y.a_to_z - x.a_to_z ;
+                })
+                console.log(name_data)                
+                for (var i = 0; i < name_data.length; i++){
+                    $('tr[class=name_tb]').remove();
+                }
+                for (var i = 0; i < name_data.length; i++){
+                    $('tbody').append('<tr class="name_tb"><td>'+name_data[i].f_name +'</td><td>'+name_data[i].l_name +'</td></tr>');
+                }
+
+            }
+            
+            let atoz_btn = document.getElementById("atoz_btn");
+            var sort_btn = document.getElementsByClassName("sort-btn");
+            var sort_btns = Array.from(sort_btn);
+
+            sort_btns.forEach(function(target){
+                target.addEventListener("click",function(){
+                    console.log(target);
+                    for(let i = 0; i < Object.keys(sort_btn).length; i++){
+                        if(sort_btn[i].classList.contains('btn-danger')){
+                            sort_btn[i].classList.remove('btn-danger');
+                            sort_btn[i].classList.add('btn-secondary');
+                        }
+                    }
+                    if(target.classList.contains('btn-secondary')){
+                        target.classList.remove('btn-secondary');
+                        target.classList.add('btn-danger');
+                    }else if(target.classList.contains('btn-danger')){
+                        target.classList.remove('btn-danger');
+                        target.classList.add('btn-secondary');
+                    }
+                    console.log(target.id);
+                    var sort_mode = target.id;
+                    if(sort_mode === "atoz_btn"){
+                        display_name();
+                    }else if(sort_mode === "atoz_btn"){
+
+                    }else if(sort_mode === "atoz_btn"){
+                    
+                    }else if(sort_mode === "atoz_btn"){
+
+                    }
+                });
+            });
+
+        }(jQuery))
+        
+
     </script>
 
 </body>
