@@ -108,6 +108,15 @@
                     {l_name: 'NAKAYAMA[CEP]', f_name: 'YUKI ', a_to_z: 15, a_to_nn: 24},
                 ]
 
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = now.getMonth()+1;
+            var date = now.getDate();
+            var hour = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            
+            
             var display_name = function(mode){
                 console.log(mode)
                 var name_data = data_list.sort(function(x, y){
