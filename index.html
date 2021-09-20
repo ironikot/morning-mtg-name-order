@@ -20,7 +20,7 @@
     <main>
         <!-- date and timer -->
         <div class="container text-center">
-            <div>2021/9/15 11:37 PM</div>
+            <div id="now_time"></div>
         </div>
         <!-- name and memo -->
         <div class="container">
@@ -82,54 +82,65 @@
         (function scopeWrapper($){
             console.log("hello");
             var data_list = [
-                    {l_name: 'Ueno', f_name: 'Ken ', a_to_z: 1, a_to_nn: 1},
-                    {l_name: 'Ishii', f_name: 'Genichi ', a_to_z: 5, a_to_nn: 2},
-                    {l_name: 'MIZUTA', f_name: 'HIDEYUKI ', a_to_z: 13, a_to_nn: 3},
-                    {l_name: 'Hara', f_name: 'Kazuaki ', a_to_z: 3, a_to_nn: 4},
-                    {l_name: 'Watanabe', f_name: 'Keita ', a_to_z: 23, a_to_nn: 5},
-                    {l_name: 'Matsushita', f_name: 'Kodai ', a_to_z: 11, a_to_nn: 6},
-                    {l_name: 'KOJIMA', f_name: 'KOH ', a_to_z: 8, a_to_nn: 7},
-                    {l_name: 'MATSUI', f_name: 'MANABU ', a_to_z: 10, a_to_nn: 8},
-                    {l_name: 'Minakawa', f_name: 'Masahiro ', a_to_z: 12, a_to_nn: 9},
-                    {l_name: 'Nagai', f_name: 'Naoki ', a_to_z: 14, a_to_nn: 10},
-                    {l_name: 'Shuichi', f_name: 'SAITO ', a_to_z: 19, a_to_nn: 11},
-                    {l_name: 'HIRANO', f_name: 'SATOMI ', a_to_z: 4, a_to_nn: 12},
-                    {l_name: 'TADA', f_name: 'SEIJI ', a_to_z: 20, a_to_nn: 13},
-                    {l_name: 'Kato', f_name: 'Shinya ', a_to_z: 6, a_to_nn: 14},
-                    {l_name: 'Kawaguchi', f_name: 'Takanobu ', a_to_z: 7, a_to_nn: 15},
-                    {l_name: 'Yonesaka', f_name: 'Takeshi ', a_to_z: 24, a_to_nn: 16},
-                    {l_name: 'shimodaira', f_name: 'tokinori ', a_to_z: 18, a_to_nn: 17},
-                    {l_name: 'nishiki1', f_name: 'wataru ', a_to_z: 16, a_to_nn: 18},
-                    {l_name: 'Osonoi', f_name: 'Yasushi ', a_to_z: 17, a_to_nn: 19},
-                    {l_name: 'egashira', f_name: 'yoshimitsu ', a_to_z: 2, a_to_nn: 20},
-                    {l_name: 'TSUDA', f_name: 'YOSHITAKA ', a_to_z: 22, a_to_nn: 21},
-                    {l_name: 'Takahashi', f_name: 'Yudai ', a_to_z: 21, a_to_nn: 22},
-                    {l_name: 'Lin', f_name: 'Yuhan ', a_to_z: 9, a_to_nn: 23},
-                    {l_name: 'NAKAYAMA[CEP]', f_name: 'YUKI ', a_to_z: 15, a_to_nn: 24},
-                ]
+                // INSERT YOUR DATA BELOW
+                {l_name: 'Nishioka', f_name: 'Airi', l_a_to_z: 13, f_a_to_z: 1},
+                {l_name: 'Ikemoto', f_name: 'Atsuhiko', l_a_to_z: 5, f_a_to_z: 2},
+                {l_name: 'Nagaoka', f_name: 'Ayaka', l_a_to_z: 12, f_a_to_z: 3},
+                {l_name: 'Okita', f_name: 'Hanako', l_a_to_z: 14, f_a_to_z: 4},
+                {l_name: 'Hagiwara', f_name: 'Hiromi', l_a_to_z: 3, f_a_to_z: 5},
+                {l_name: 'Ishiwatari', f_name: 'Kazue', l_a_to_z: 7, f_a_to_z: 6},
+                {l_name: 'Miyahara', f_name: 'Kinya', l_a_to_z: 10, f_a_to_z: 7},
+                {l_name: 'Honma', f_name: 'Marumi', l_a_to_z: 4, f_a_to_z: 8},
+                {l_name: 'Aoyagi', f_name: 'Masaki', l_a_to_z: 1, f_a_to_z: 9},
+                {l_name: 'Ootomo', f_name: 'Masato', l_a_to_z: 15, f_a_to_z: 10},
+                {l_name: 'Kitagawa', f_name: 'Miku', l_a_to_z: 8, f_a_to_z: 11},
+                {l_name: 'Shiga', f_name: 'Ouka', l_a_to_z: 17, f_a_to_z: 12},
+                {l_name: 'Yanagihara', f_name: 'Reina', l_a_to_z: 20, f_a_to_z: 13},
+                {l_name: 'Mizutani', f_name: 'Ritsuko', l_a_to_z: 11, f_a_to_z: 14},
+                {l_name: 'Ishimoto', f_name: 'Susumu', l_a_to_z: 6, f_a_to_z: 15},
+                {l_name: 'Kitano', f_name: 'Tatsuo', l_a_to_z: 9, f_a_to_z: 16},
+                {l_name: 'Uehara', f_name: 'Toshiyuki', l_a_to_z: 18, f_a_to_z: 17},
+                {l_name: 'Wakamatsu', f_name: 'Touya', l_a_to_z: 19, f_a_to_z: 18},
+                {l_name: 'Sasaki', f_name: 'Yoriko', l_a_to_z: 16, f_a_to_z: 19},
+                {l_name: 'Fukuda', f_name: 'Yuina', l_a_to_z: 2, f_a_to_z: 20},
+            ];
 
-            var now = new Date();
-            var year = now.getFullYear();
-            var month = now.getMonth()+1;
-            var date = now.getDate();
-            var hour = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
+            var displayTime =()=> {
+                var formatData =(num)=>{
+                    var ret = 0;
+                    if (num < 10) {
+                        ret = "0" + num;
+                    }else{
+                        ret = num;
+                    }
+                    return ret;
+                }
+                var time_display = document.getElementById("now_time");
+                var now = new Date();
+                var year = formatData(now.getFullYear());
+                var month = formatData(now.getMonth()+1);
+                var date = formatData(now.getDate());
+                var hour = formatData(now.getHours());
+                var minutes = formatData(now.getMinutes());
+                var seconds = formatData(now.getSeconds());
+                time_display.innerHTML = year + "年" + month + "月" + date + "日" + hour + ":" + minutes + ":" + seconds;
+            }
+            setInterval(displayTime, 1000);
+
             
-            
-            var display_name = function(mode){
+            var displayName=(mode)=> {
                 console.log(mode)
                 var name_data = data_list.sort(function(x, y){
                     if(mode==="name_atoz_btn"){
-                        return  x.a_to_z - y.a_to_z;
+                        return  x.l_a_to_z - y.l_a_to_z;
                     }else if(mode==="name_ztoa_btn"){
-                        return y.a_to_z - x.a_to_z ;
+                        return y.l_a_to_z - x.l_a_to_z ;
                     }else if(mode==="lname_aton_btn"){
-                        return x.a_to_nn - y.a_to_nn;
+                        return x.f_a_to_z - y.f_a_to_z;
                     }else if(mode=="lname_ntoa_btn"){
-                        return y.a_to_nn - x.a_to_nn;
+                        return y.f_a_to_z - x.f_a_to_z;
                     }
-                //return x.a_to_z - y.a_to_z;
+                //return x.l_a_to_z - y.l_a_to_z;
 
                 })
                 console.log(name_data)                
@@ -164,7 +175,7 @@
                     }
                     console.log(target.id);
                     var sort_mode = target.id;
-                    display_name(sort_mode);
+                    displayName(sort_mode);
 
                 });
             });
