@@ -79,8 +79,8 @@
     <!-- Write all js here for making one html file -->
     <script type="text/javascript">
         'use strict';
+        // @ironikot made on 9/20/2021
         (function scopeWrapper($){
-            console.log("hello");
             var data_list = [
                 // INSERT YOUR DATA BELOW
                 {l_name: 'Nishioka', f_name: 'Airi', l_a_to_z: 13, f_a_to_z: 1},
@@ -129,21 +129,18 @@
 
             
             var displayName=(mode)=> {
-                console.log(mode)
                 var name_data = data_list.sort(function(x, y){
                     if(mode==="name_atoz_btn"){
-                        return  x.l_a_to_z - y.l_a_to_z;
-                    }else if(mode==="name_ztoa_btn"){
-                        return y.l_a_to_z - x.l_a_to_z ;
-                    }else if(mode==="lname_aton_btn"){
                         return x.f_a_to_z - y.f_a_to_z;
-                    }else if(mode=="lname_ntoa_btn"){
+                    }else if(mode==="name_ztoa_btn"){
                         return y.f_a_to_z - x.f_a_to_z;
+                    }else if(mode==="lname_aton_btn"){
+                        return  x.l_a_to_z - y.l_a_to_z;
+                    }else if(mode=="lname_ntoa_btn"){
+                        return y.l_a_to_z - x.l_a_to_z ;
                     }
-                //return x.l_a_to_z - y.l_a_to_z;
 
                 })
-                console.log(name_data)                
                 for (var i = 0; i < name_data.length; i++){
                     $('tr[class=name_tb]').remove();
                 }
@@ -159,7 +156,6 @@
 
             sort_btns.forEach(function(target){
                 target.addEventListener("click",function(){
-                    console.log(target);
                     for(let i = 0; i < Object.keys(sort_btn).length; i++){
                         if(sort_btn[i].classList.contains('btn-danger')){
                             sort_btn[i].classList.remove('btn-danger');
@@ -173,7 +169,6 @@
                         target.classList.remove('btn-danger');
                         target.classList.add('btn-secondary');
                     }
-                    console.log(target.id);
                     var sort_mode = target.id;
                     displayName(sort_mode);
 
