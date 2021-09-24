@@ -80,16 +80,14 @@
     <script type="text/javascript">
         'use strict';
         // @ironikot made on 9/20/2021
-        console.log("load window");
         var MtgSortAPP = window.MtgSortAPP || {};
-        console.log(MtgSortAPP);
+        
 
         (function scopeWrapper($){
 
             MtgSortAPP.init = ()=>{
                 setInterval(MtgSortAPP.displayTime, 1000);
                 MtgSortAPP.sortChangeByBtn();
-                console.log("load scope");
             }
 
             var data_list = [
@@ -192,7 +190,6 @@
 
 
         }(jQuery))
-        console.log("load init");
         window.MtgSortAPP.init();        
 
     </script>
